@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+  resources :runs
+  resources :users, only: [:create, :show, :update]
  
-    get '/hello', to: 'application#hello'
+  post "/signup", to: "users#create"
+  get "/me", to: "users#show"
+  
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 
-    get '*path',
+  get '*path',
     to: 'fallback#index',
     constraints: ->(req) { !req.xhr? && req.format.html? }
 
 end
+ 
