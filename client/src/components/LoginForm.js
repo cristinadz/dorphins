@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Input, VStack, Heading, Button, Box } from '@chakra-ui/react'
 
 function LoginForm({ setUser }) {
   const [username, setUsername] = useState('');
@@ -31,8 +32,12 @@ function LoginForm({ setUser }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2>welcome back! glad to see you, again!</h2>
-        <input
+        <Box m={5} maxW='sm'> 
+        <Heading textAlign ='center' mt={9}> welcome back! glad to see you, again! </Heading>
+        <VStack align='stretch' m={3} spacing={5} >
+        <Input
+            variant='filled'
+            p={6}
             type='text'
             placeholder='enter your username'
             id='username'
@@ -40,7 +45,9 @@ function LoginForm({ setUser }) {
             onChange={(e) => setUsername(e.target.value)}
             autoComplete='off'
           />
-          <input
+          <Input
+          p={6}
+            variant='filled'
             type='password'
             placeholder='enter your password'
             id='password'
@@ -48,7 +55,9 @@ function LoginForm({ setUser }) {
             onChange={(e) => setPassword(e.target.value)}
             autoComplete='current-password'
           />
-          <button type='submit'>login </button>
+          <Button p={7} bg="black" textColor="white"type='submit'>login </Button>
+          </VStack>
+          </Box>
       </form>
     </div>
   )

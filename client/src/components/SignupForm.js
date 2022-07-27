@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Input, VStack, Heading, Button, Box } from '@chakra-ui/react'
 
 function SignupForm({ setUser }) {
     const [firstName, setFirstName] = useState('')
@@ -43,9 +44,10 @@ function SignupForm({ setUser }) {
 
   return (
     <div>
-        <form onSubmit={ handleSubmit }>
-            <h2> hello! register to get started </h2>
-            <input 
+      <form onSubmit={ handleSubmit }>
+        <Box m={5} maxW='sm'> 
+          <h2> hello! register to get started </h2>
+            <Input 
               type="text"
               id="new_first_name"
               autoComplete='off'
@@ -53,8 +55,8 @@ function SignupForm({ setUser }) {
               value={firstName}
               onChange={ e => setFirstName(e.target.value)}
               />
-              
-            <input 
+               
+            <Input 
               type="text"
               id="new_last_name"
               autoComplete='off'
@@ -63,7 +65,7 @@ function SignupForm({ setUser }) {
               onChange={ e => setLastName(e.target.value)}
               />
 
-            <input 
+            <Input 
               type="text"
               id="new_username"
               autoComplete='off'
@@ -72,7 +74,7 @@ function SignupForm({ setUser }) {
               onChange={ e => setUsername(e.target.value)}
               />
 
-            <input 
+            <Input 
               type="text"
               id="email"
               autoComplete='off'
@@ -80,7 +82,7 @@ function SignupForm({ setUser }) {
               value={email}
               onChange={ e => setEmail(e.target.value)}
               />
-            <input 
+            <Input 
               type="password"
               id="new_password"
               autoComplete='off'
@@ -89,7 +91,7 @@ function SignupForm({ setUser }) {
               onChange={ e => setPassword(e.target.value)}
               />
 
-            <input 
+            <Input 
               type="password"
               id="password_confirmation"
               autoComplete='off'
@@ -97,9 +99,9 @@ function SignupForm({ setUser }) {
               value={passwordConfirmation}
               onChange={ e => setPasswordConfirmation(e.target.value)}
               />
-            <button type='submit'> register </button>
-
-        </form>
+          <button type='submit'> register </button>
+        </Box>
+      </form>
     </div>
   )
 }
