@@ -4,20 +4,21 @@ import './index.css';
 import App from './pages/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react'
 
 // Prime React configuration
-import "primereact/resources/themes/tailwind-light/theme.css";  //theme
-import "primereact/resources/primereact.min.css";               //core css
-import "primeicons/primeicons.css";                             //icons
-import "primeflex/primeflex.css";
-
+// import "primereact/resources/primereact.min.css";               //core css
+// import "primeicons/primeicons.css";                             //icons
+// import "primeflex/primeflex.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter> 
-      <App />
-    </BrowserRouter>
+    <ChakraProvider>
+      <BrowserRouter> 
+        <App />
+      </BrowserRouter>
+    </ChakraProvider>
   </React.StrictMode>
 );
 

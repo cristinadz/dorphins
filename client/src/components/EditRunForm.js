@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DurationPicker from "react-duration-picker";
 import {
+	Flex,
+  Stack,
+	Heading,
 	Box,
 	Button,
-	NumberInput,
-	Input,
 	Text,
-	Heading,
-	NumberInputField, 
-	Stack,
-	Flex,
+	Input,
+	NumberInput,
+	NumberInputField,
 } from "@chakra-ui/react";
 
-function NewRunForm({ user, addNewRun }) {
+function EditRunForm({ user }) {
 	const [miles, setMiles] = useState(null);
 	const [totalTime, setTotalTime] = useState(null);
 	const [date, setDate] = useState("");
@@ -24,42 +24,15 @@ function NewRunForm({ user, addNewRun }) {
 		setTotalTime(totalMin);
 	}
 
-	function handleSubmit(e) {
-		e.preventDefault();
-
-		fetch("/runs", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				miles: miles,
-				total_time: totalTime,
-				user_id: user.id,
-				date,
-			}),
-		}).then( r => {
-			if (r.ok) {
-				r.json().then( run => {
-					addNewRun(run)
-				})
-			}
-		})
-		.then(navigate("/activity"));
-	}
-
 	return (
 		<div>
 			<Flex align={"center"} justify={"center"}>
-				<form onSubmit={handleSubmit}>
-					<Heading textAlign="center" mt={9}>
-						{" "}
-						let's log those miles!
-					</Heading>
+				<form>
+					<Heading> edit your run</Heading>
 					<Box m={5} maxW="sm">
 						<Stack>
 							<Text> distance (miles) </Text>
-							<NumberInput defaultValue={1} precision={2} step={0.2}>
+							<NumberInput defaultValue={miles} precision={2} step={0.2}>
 								<NumberInputField
 									value={miles}
 									onChange={(e) => setMiles(e.target.value)}
@@ -81,7 +54,7 @@ function NewRunForm({ user, addNewRun }) {
 								onChange={(e) => setDate(e.target.value)}
 							/>
 
-							<Button type="submit"> add </Button>
+							<Button type="submit"> save </Button>
 						</Stack>
 					</Box>
 				</form>
@@ -90,4 +63,4 @@ function NewRunForm({ user, addNewRun }) {
 	);
 }
 
-export default NewRunForm;
+export default EditRunForm;
