@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :plans
   resources :runs
   resources :users, only: [:create, :show, :update]
  
