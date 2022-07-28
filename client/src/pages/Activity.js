@@ -1,27 +1,20 @@
-import React, {useState, useEffect} from 'react'
-import NewRunForm from '../components/NewRunForm'
-import RunCard from '../components/RunCard';
+import React from "react";
+import RunCard from "../components/RunCard";
+import { Link } from "react-router-dom";
+import { Button } from "@chakra-ui/react";
 
-function Activity({setUser, user}) {
-  const [runs, setRuns] = useState([])
+function Activity({ setUser, user, runs}) {
 
-  useEffect(() => {
-    fetch('/runs')
-      .then((r) => r.json())
-      .then(setRuns);
-  }, []);
+	const runCards = runs.map((run) => <RunCard key={run.id} run={run} />);
 
-  const runCards = runs.map( run => (
-    <RunCard key={run.id} run={run} />
-  ))
-
-  return (
-    <div>
-
-      {runCards}
-      <NewRunForm user={user}/>
-    </div>
-  )
+	return (
+		<div>
+			<Button as={Link} to="/addrun">
+				add a run
+			</Button> 
+			{runCards}
+		</div>
+	);
 }
 
-export default Activity
+export default Activity;

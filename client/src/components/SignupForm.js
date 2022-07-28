@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Input, VStack, Heading, Button, Box } from '@chakra-ui/react'
+import { Input, Box } from '@chakra-ui/react'
 
 function SignupForm({ setUser }) {
     const [firstName, setFirstName] = useState('')

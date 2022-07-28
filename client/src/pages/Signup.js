@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import SignupForm from '../components/SignupForm'
-import { IconButton, Text, Link,  Container, Heading, HStack } from '@chakra-ui/react'
+import { Text, Link, HStack } from '@chakra-ui/react'
 
 function Signup({setUser}) {
   return (
