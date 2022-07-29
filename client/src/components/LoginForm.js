@@ -20,13 +20,14 @@ function LoginForm({ setUser }) {
     })
       .then((r) => {
         if (r.ok) {
-          r.json().then((user) => setUser(user));
+          r.json().then((user) => setUser(user))
+          .then(navigate('/home'));
         } else {
-          r.json().then((err) => setErrors(err.errors));
+          r.json().then((err) => setErrors(err));
           console.log(errors);
         }
       })
-      .then(navigate('/home'));
+      ;
   }
 
   return (

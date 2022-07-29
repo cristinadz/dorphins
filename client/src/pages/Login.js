@@ -6,7 +6,7 @@ import { Text, Link,  Container, HStack } from '@chakra-ui/react'
 function Login({ setUser }) {
   return (
     <div>
-        <LoginForm setUser = {setUser} />
+        <LoginForm setUser={setUser} />
         <Container m={5} >
           <HStack >
             <Text> don't have an account?</Text>

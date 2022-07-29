@@ -5,6 +5,7 @@ import { Button } from "@chakra-ui/react";
 
 function Activity({ setUser, user, runs}) {
 
+	console.log(user)
 	const runCards = runs.map((run) => <RunCard key={run.id} run={run} />);
 
 	return (

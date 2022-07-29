@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button } from 'primereact/button'
+import { IconButton } from '@chakra-ui/react';
+import { GrHomeRounded, GrUser, GrBarChart, GrCalendar, GrLogout } from "react-icons/gr"
 
-function NavBar( setUser ) {
+function NavBar( setUser, user ) {
   const navigate = useNavigate();
 
   function handleLogoutClick() {
@@ -15,10 +17,11 @@ function NavBar( setUser ) {
 
   return (
     <div>
-        <Link to='/home'>home</Link>
-        <Link to='/profile'>profile</Link>
-        <Link to='/activity'>activity</Link>
-        <Button onClick={ handleLogoutClick } > logout </Button>
+      <IconButton as={Link} to='/home' icon={<GrHomeRounded />} />
+      <IconButton as={Link} to='/profile' icon={<GrUser />} />
+      <IconButton as={Link} to='/activity' icon={<GrBarChart />} />
+      <IconButton as={Link} to='/events' icon={<GrCalendar />} />
+      <IconButton onClick={handleLogoutClick } icon={<GrLogout />}/>
     </div>
   )
 }

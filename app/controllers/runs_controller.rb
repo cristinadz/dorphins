@@ -2,7 +2,7 @@ class RunsController < ApplicationController
     wrap_parameters false
 
     def index 
-        render json: Run.all
+        render json: @current_user.runs
     end
 
     def show 

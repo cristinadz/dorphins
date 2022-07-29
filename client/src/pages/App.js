@@ -9,6 +9,7 @@ import NavBar from "../components/NavBar";
 import NewRunForm from "../components/NewRunForm";
 import EditRunForm from "../components/EditRunForm";
 import RunDetails from "./RunDetails";
+import EventPage from "./EventPage";
 
 function App() {
   const [user, setUser] = useState(null)
@@ -27,7 +28,7 @@ function App() {
     fetch('/runs')
       .then((r) => r.json())
       .then(setRuns);
-  }, []);
+  }, []); 
 
   function addNewRun(newRun){
     setRuns( runs => [...runs, newRun])
@@ -37,22 +38,23 @@ function App() {
     const updatedRuns = runs.filter( run => run.id !== id)
     setRuns(updatedRuns)
   }
-  // if (!user) return <Welcome setUser={setUser} />
 
+ 
   return (
     <div className="App">
 
-      { !user ? null : <NavBar setUser={ setUser }/> }
+      { !user ? null : <NavBar setUser={ setUser } /> }
 
       <Routes>
-        <Route path='/' element={<Welcome setUser = {setUser} />} />
-        <Route path='/home' element={<Home />} />
+        <Route path='/' element={<Welcome setUser = {setUser} user={user} />} />
+        <Route path='/home' element={<Home user={user} />} />
         <Route path='/activity' element={<Activity user = {user} setUser = {setUser} runs={runs} />} />
+        <Route path='/events' element= {<EventPage />} />
         <Route path='/login' element= {<Login setUser = {setUser} />} />
         <Route path='/signup' element= {<Signup setUser = {setUser} />} />
         <Route path='/addrun' element= {<NewRunForm user={user} addNewRun={addNewRun} />} />
         <Route path='/edit_run' element= {<EditRunForm user={user} />} />
-        <Route path='/runs/:id' element= {<RunDetails deleteRun={deleteRun} />} />
+        <Route path='/runs/:id' element= {<RunDetails deleteRun={deleteRun} user = {user} />} />
       </Routes>
       
     </div>
