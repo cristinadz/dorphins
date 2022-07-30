@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :plans
   resources :runs
+  resources :events
   resources :users, only: [:create, :show, :update]
  
   post "/signup", to: "users#create"
