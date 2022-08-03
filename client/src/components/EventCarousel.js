@@ -8,6 +8,7 @@ import {
 	Text,
 	Container,
 	Image,
+	Flex,
 } from "@chakra-ui/react";
 import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 import Slider from "react-slick";
@@ -15,12 +16,12 @@ import Slider from "react-slick";
 // Settings for the slider
 const settings = {
 	dots: true,
-	arrows: false,
+	arrows: true,
 	fade: true,
 	infinite: true,
 	autoplay: true,
 	speed: 500,
-	autoplaySpeed: 5000,
+	autoplaySpeed: 3000,
 	slidesToShow: 1,
 	slidesToScroll: 1,
 };
@@ -31,15 +32,15 @@ function EventCarousel({ events }) {
 	const side = useBreakpointValue({ base: "5%", md: "10%" });
 
 	return (
-		<div>
+		<>
             
-			<Container centerContent>
+			<Container pt={9} pb={5} centerContent  >
 				<Box
-					//   position={'fixed'}
+					  position={'static'}
 					height={"3xs"}
 					width={"sm"}
 					rounded={"2xl"}
-					overflow={"hidden"}
+					overflow={''}
 				>
 					{/* CSS files for react-slick */}
 					<link
@@ -54,20 +55,23 @@ function EventCarousel({ events }) {
 						href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
 					/>
 					{/* Left Icon */}
+					{/* <Flex> 
 					<IconButton
+					flex={1}
 						aria-label="left-arrow"
 						variant="ghost"
-						position="absolute"
+						position="static"
 						left={side}
 						top={top}
-						transform={"translate(0%, -50%)"}
+						// transform={"translate(0%, -50%)"}
 						zIndex={2}
 						onClick={() => slider?.slickPrev()}
 					>
 						<IoIosArrowDropleft size="25" />
-					</IconButton>
+					</IconButton> */}
 					{/* Right Icon */}
-					<IconButton
+					{/* <IconButton
+					flex={1}
 						aria-label="right-arrow"
 						variant="ghost"
 						position="absolute"
@@ -79,27 +83,30 @@ function EventCarousel({ events }) {
 					>
 						<IoIosArrowDropright size="25px" />
 					</IconButton>
+					</Flex> */}
 					{/* Slider */}
 					<Slider {...settings} ref={(slider) => setSlider(slider)}>
 						{events.slice(0, 3).map((event) => (
 							<Box
 								key={event.id}
-								height={"sm"}
-								width={"xs"}
+								height={"3xs"}
+								rounded={"2xl"}
+								width={"sm"}
 								position="center"
 								backgroundPosition="center"
 								backgroundRepeat="no-repeat"
 								backgroundSize="cover"
 								backgroundColor={"gray.200"}
 							>
-								<Container height="2xs" centerContent>
-									<VStack spacing={2} maxW={"xs"} mt={8}>
+								<Container height="3xs" centerContent>
+									<VStack spacing={2} maxW={"xs"} mt={6}>
 										<Image
 											borderRadius="md"
-											boxSize="100px"
+											boxSize="120px"
 											src={event.img}
 											alt="race logo"
 										/>
+                                        {console.log(event)}
 										<Heading fontSize={"xl"} >{event.name}</Heading>
 										<Text
 											fontSize={{ base: "md", lg: "lg" }}
@@ -114,7 +121,7 @@ function EventCarousel({ events }) {
 					</Slider>
 				</Box>
 			</Container>
-		</div>
+		</>
 	);
 }
 

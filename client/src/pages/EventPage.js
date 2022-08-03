@@ -1,6 +1,8 @@
-import { Container } from '@chakra-ui/react';
+import { Container, Heading } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react'
-import EventCarousel from '../components/EventCarousel';
+import EventCarousel from '../components/EventCarousel'
+import EventCard from '../components/EventCard';
+
 
 function EventPage() {
   const [events, setEvents] = useState([])
@@ -10,11 +12,15 @@ function EventPage() {
       .then((r) => r.json())
       .then(setEvents);
   }, []);
+
+  const eventCards = events.map( event => <EventCard event={event} />)
   
   return (
-    <div>
+    <>
       <EventCarousel events={events}/>
-    </div>
+      <Heading textAlign={'left'} pl={5}> upcoming events</Heading>
+      { eventCards }
+    </>
   )
 }
 

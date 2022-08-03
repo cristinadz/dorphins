@@ -10,6 +10,8 @@ import NewRunForm from "../components/NewRunForm";
 import EditRunForm from "../components/EditRunForm";
 import RunDetails from "./RunDetails";
 import EventPage from "./EventPage";
+import { ViewIcon } from "@chakra-ui/icons";
+import ViewProfile from "./ViewProfile";
 
 function App() {
   const [user, setUser] = useState(null)
@@ -55,6 +57,7 @@ function App() {
         <Route path='/addrun' element= {<NewRunForm user={user} addNewRun={addNewRun} />} />
         <Route path='/edit_run' element= {<EditRunForm user={user} />} />
         <Route path='/runs/:id' element= {<RunDetails deleteRun={deleteRun} user = {user} />} />
+        <Route path='/profile' element= {<ViewProfile user = {user} />} />
       </Routes>
       
     </div>

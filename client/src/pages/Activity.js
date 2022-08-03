@@ -104,7 +104,7 @@ function Activity({ setUser, user, runs}) {
 		datasets: [
 		  {
 			label: "miles",
-			data: [janMiles, febMiles, marMiles, aprMiles, mayMiles, junMiles, julyMiles, augRuns, sepMiles, octMiles, novMiles, decMiles],
+			data: [janMiles, febMiles, marMiles, aprMiles, mayMiles, junMiles, julyMiles, augMiles, sepMiles, octMiles, novMiles, decMiles],
 			fill: true,
 			backgroundColor: "rgba(75,192,192,0.2)",
 			borderColor: "rgba(75,192,192,1)"
@@ -130,4 +130,4 @@ function Activity({ setUser, user, runs}) {
 	);
 }
 
-export default Activity;
+export default Activity
