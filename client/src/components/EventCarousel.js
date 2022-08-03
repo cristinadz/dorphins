@@ -33,8 +33,10 @@ function EventCarousel({ events }) {
 
 	return (
 		<>
-            
-			<Container pt={9} pb={5} centerContent  >
+            <Heading pt={9} px={3}> featured races:</Heading>
+
+			<Container pt={3} pb={5} centerContent  >
+
 				<Box
 					  position={'static'}
 					height={"3xs"}
@@ -106,8 +108,7 @@ function EventCarousel({ events }) {
 											src={event.img}
 											alt="race logo"
 										/>
-                                        {console.log(event)}
-										<Heading fontSize={"xl"} >{event.name}</Heading>
+										<Heading fontSize={"xl"} >{event.name.toLowerCase()}</Heading>
 										<Text
 											fontSize={{ base: "md", lg: "lg" }}
 											color="GrayText"

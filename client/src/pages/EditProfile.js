@@ -1,0 +1,153 @@
+import React, { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom';
+import {
+    FormControl,
+    Input, 
+    FormLabel,
+    Button,
+    Stack, 
+} from '@chakra-ui/react'
+
+function EditProfile({ user, setUser}) {
+    const navigate = useNavigate();
+    const [profileData, setProfileData] = useState({
+        first_name: user.first_name,
+        last_name: user.last_name,
+        username: user.username,
+        email: user.email,
+        profile_img: user.profile_img,
+        bio: user.bio
+      });
+    
+      function handleFormChange(e) {
+        setProfileData((profileData) => ({
+          ...profileData,
+          [e.target.name]: e.target.value,
+        }));
+      }
+    
+      async function handlePatchProfile(e) {
+        e.preventDefault();
+    
+        const res = await fetch(`/users/${user.id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(profileData),
+        });
+    
+        if (res.ok) {
+          res
+            .json()
+            .then((updatedUser) => {
+              setUser(updatedUser);
+            })
+            .then(navigate('/profile'));
+        }
+      }
+
+  return (
+    <div>
+        <form onSubmit={handlePatchProfile}>
+          <FormControl isRequired mt={3}>
+            <FormLabel>first name</FormLabel>
+            <Input
+              type='text'
+              name='first_name'
+              autoComplete='off'
+              value={profileData.first_name}
+              onChange={handleFormChange}
+              textColor={'gray.800 '}
+            />
+          </FormControl>
+
+          <FormControl isRequired mt={3}>
+            <FormLabel>last name</FormLabel>
+            <Input
+              type='text'
+              name='last_name'
+              autoComplete='off'
+              value={profileData.last_name}
+              onChange={handleFormChange}
+              textColor={'gray.800 '}
+            />
+          </FormControl>
+
+          <FormControl isRequired mt={3}>
+            <FormLabel>username</FormLabel>
+            <Input
+              type='text'
+              name='username'
+              autoComplete='off'
+              value={profileData.username}
+              onChange={handleFormChange}
+              textColor={'gray.800 '}
+            />
+          </FormControl>
+          
+          <FormControl isRequired mt={3}>
+            <FormLabel>email address</FormLabel>
+            <Input
+              type='text'
+              name='email'
+              autoComplete='off'
+              value={profileData.email}
+              onChange={handleFormChange}
+            />
+          </FormControl>
+          <FormControl mt={3}>
+            <FormLabel>image url</FormLabel>
+            <Input
+              type='text'
+              name='profile_img'
+              autoComplete='off'
+              value={profileData.profile_img}
+              onChange={handleFormChange}
+            />
+          </FormControl>
+
+          <FormControl  mt={3}>
+            <FormLabel>bio</FormLabel>
+            <Input
+              type='text'
+              name='bio'
+              autoComplete='off'
+              value={profileData.bio}
+              onChange={handleFormChange}
+              textColor={'gray.800 '}
+            />
+          </FormControl>
+
+          <Stack mt={4} spacing={6} direction={['column', 'row']}>
+            <Button
+              as={Link}
+              to='/profile'
+              bg={'red.400'}
+              color={'white'}
+              w='full'
+              _hover={{
+                bg: 'red.500',
+              }}
+            >
+              cancel
+            </Button>
+            <Button
+              type='submit'
+              bg={'blue.400'}
+              color={'white'}
+              w='full'
+              _hover={{
+                bg: 'blue.500',
+              }}
+            >
+              save
+            </Button>
+          </Stack>
+        </form>
+
+    </div>
+  )
+}
+
+export default EditProfile

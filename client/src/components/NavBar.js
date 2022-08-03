@@ -125,10 +125,8 @@ function NavBar({ setUser }) {
 							<IconButton as={NavLink} to="/profile"  icon={<FaUserCircle />} />
 							</MenuButton>
 							<MenuList>
-
-
 								<MenuItem as={NavLink} to='/profile'>view profile</MenuItem>
-								<MenuItem>edit profile</MenuItem>
+								<MenuItem as={NavLink} to='/edit_profile'> edit profile</MenuItem>
 								<MenuDivider />
 								<MenuItem icon={<GrLogout />} as={Button} onClick={handleLogoutClick} bgColor={"white"}>logout</MenuItem>
 							</MenuList>

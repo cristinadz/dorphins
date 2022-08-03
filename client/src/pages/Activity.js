@@ -112,8 +112,6 @@ function Activity({ setUser, user, runs}) {
 
 		]
 	  }
-
-	
 	return (
 		<div>
 			<Container>

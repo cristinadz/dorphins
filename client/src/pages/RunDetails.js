@@ -33,9 +33,8 @@ function RunDetails({deleteRun}) {
 		<div>
 			{run.miles}
 
-			<IconButton
+			<IconButton 
                 as={Link} to="/edit_run"
-				onClick={(e) => console.log("clicked")}
 				variant="unstyled"
 				icon={<EditIcon />}
 			/>
