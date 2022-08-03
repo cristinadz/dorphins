@@ -10,6 +10,9 @@ import NewRunForm from "../components/NewRunForm";
 import EditRunForm from "../components/EditRunForm";
 import RunDetails from "./RunDetails";
 import EventPage from "./EventPage";
+import { ViewIcon } from "@chakra-ui/icons";
+import ViewProfile from "./ViewProfile";
+import EditProfile from "./EditProfile";
 
 function App() {
   const [user, setUser] = useState(null)
@@ -28,7 +31,7 @@ function App() {
     fetch('/runs')
       .then((r) => r.json())
       .then(setRuns);
-  }, []); 
+  }, [user]); 
 
   function addNewRun(newRun){
     setRuns( runs => [...runs, newRun])
@@ -53,8 +56,11 @@ function App() {
         <Route path='/login' element= {<Login setUser = {setUser} />} />
         <Route path='/signup' element= {<Signup setUser = {setUser} />} />
         <Route path='/addrun' element= {<NewRunForm user={user} addNewRun={addNewRun} />} />
-        <Route path='/edit_run' element= {<EditRunForm user={user} />} />
+        {/* <Route path='/edit_run' element= {<EditRunForm user={user} />} /> */}
         <Route path='/runs/:id' element= {<RunDetails deleteRun={deleteRun} user = {user} />} />
+        <Route path='/profile' element= {<ViewProfile user = {user} runs={runs} />} />
+        <Route path='/edit_profile' element= {<EditProfile user = {user} setUser = {setUser} />} />
+
       </Routes>
       
     </div>
