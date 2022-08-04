@@ -52,7 +52,7 @@ function App() {
         <Route path='/' element={<Welcome setUser = {setUser} user={user} />} />
         <Route path='/home' element={<Home user={user} />} />
         <Route path='/activity' element={<Activity user = {user} setUser = {setUser} runs={runs} />} />
-        <Route path='/events' element= {<EventPage />} />
+        <Route path='/events' element= {<EventPage user = {user} />} />
         <Route path='/login' element= {<Login setUser = {setUser} />} />
         <Route path='/signup' element= {<Signup setUser = {setUser} />} />
         <Route path='/addrun' element= {<NewRunForm user={user} addNewRun={addNewRun} />} />

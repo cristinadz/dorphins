@@ -13,8 +13,9 @@ function RunCard({ run }) {
 	});
 
 	return (
+		
 		<Flex
-			bgColor={"gray.100"}
+			// bgColor={"gray.100"}
 			_dark={{
 				bg: "#3e3e3e",
 			}}

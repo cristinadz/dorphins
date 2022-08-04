@@ -1,7 +1,7 @@
 import React from "react";
 import RunCard from "../components/RunCard";
 import { Link } from "react-router-dom";
-import { Button, Container, VStack } from "@chakra-ui/react";
+import { Button, Container, VStack, Heading } from "@chakra-ui/react";
 import { Line } from 'react-chartjs-2'
 import { Chart as ChartJS } from 'chart.js/auto'
 
@@ -115,14 +115,14 @@ function Activity({ setUser, user, runs}) {
 	return (
 		<div>
 			<Container>
-				<VStack>
+				
 			<Button as={Link} to="/addrun">
 				add a run
 			</Button> 
 			<Line data={data} height={'lg'} />
-		
+			<Heading pt={7} pb={2} pl={0} color={'gray.600'} size={'lg'}> recent activity </Heading>
 			{runCards}
-			</VStack>
+			
 			</Container>
 		</div>
 	);

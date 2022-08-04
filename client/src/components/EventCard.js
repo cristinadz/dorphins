@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
 	Badge,
 	Button,
@@ -11,8 +12,13 @@ import {
 	useColorModeValue,
 } from "@chakra-ui/react";
 
-function EventCard({ event }) {
-    const { name, date, category, img } = event
+
+function EventCard({ event, user }) {
+	const navigate = useNavigate();
+    const { name, date, category, img, id } = event
+	const [ isRegistered, setIsRegistered ] = useState(false)
+	const [errors, setErrors] = useState([]);
+
 
     let formatDate = new Date(date).toLocaleDateString("en-us", {
 		weekday: "short",
@@ -20,6 +26,34 @@ function EventCard({ event }) {
 		month: "short",
 		day: "numeric",
 	});
+
+	function handleRegistration(e){
+		e.preventDefault();
+		let eventId = e.target.value
+
+		fetch("/registrations", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				user_id: user.id,
+				event_id: eventId,
+				paid_fee: false
+			}),
+		}).then( r => {
+			if (r.ok) {
+				r.json().then( registration => {
+					console.log(registration)
+				}).then(navigate("/activity"))
+			}
+			else {
+				r.json().then((err) => setErrors(err.errors) );
+				alert(errors.toString())
+			  }
+		})
+		
+	}
 
 	return (
 		<>
@@ -81,9 +115,11 @@ function EventCard({ event }) {
 							alignItems={"center"}
 						>
 							<Button
+								value={id}
 								flex={1}
 								fontSize={"md"}
 								rounded={"full"}
+								onClick={handleRegistration}
                                 bgColor={'gray.300'}
 								// _focus={{
 								// 	bg: "gray.900",

@@ -21,9 +21,12 @@ function ViewProfile({ user, runs }) {
 		experience,
 		email,
 		plan_id,
-        bio
+        bio,
 	} = user;
-console.log(runs)
+
+	let totalMiles = runs.map( run => run.miles).reduce((partialSum, a) => partialSum + a, 0)
+	console.log(totalMiles)
+
 	return (
 		<>
 			<VStack pt={9}>
@@ -39,9 +42,9 @@ console.log(runs)
 					{"@" + username}{" "}
 				</Text>
 
-                <Text> Total Miles: </Text>
-                <Text> Events: </Text>
-                <Text> {bio} </Text>
+                <Text> Total Miles: {totalMiles} </Text>
+                <Text> Events: {console.log(user.registrations)} </Text>
+                <Text> {console.log(bio)} </Text>
 			</VStack>
 			{/* <Box>
 				<HStack>

@@ -4,7 +4,7 @@ import EventCarousel from '../components/EventCarousel'
 import EventCard from '../components/EventCard';
 
 
-function EventPage() {
+function EventPage({ user }) {
   const [events, setEvents] = useState([])
   const [category, setCategory] = useState();
 
@@ -15,12 +15,6 @@ function EventPage() {
   }, []);
 
 
-  function getFilteredList() {
-    if (!category) {
-      return events;
-    }
-    return events.filter((event) => event.category.name === category);
-  }
 
   const filteredList = useMemo(getFilteredList, [category, events]);
 
@@ -28,8 +22,17 @@ function EventPage() {
     setCategory(e.target.value)
 
   }
-  const eventCards = filteredList.map( event => <EventCard event={event} />)
-  console.log(filteredList)
+
+  function getFilteredList() {
+    if (!category) {
+      return events;
+    }
+    return events.filter((event) => event.category === category);
+  }
+
+  const eventCards = filteredList.map( (event) => (<EventCard event={event} user={user} />))
+
+
   return (
     <>
     <EventCarousel events={events}/>
@@ -61,7 +64,7 @@ function EventPage() {
         </Button>
     </HStack>
   
-      <Heading textAlign={'left'} pl={5}> upcoming events</Heading>
+      <Heading textAlign={'left'} pl={5} size={'lg'}> upcoming events</Heading>
       { eventCards }
     </>
   )

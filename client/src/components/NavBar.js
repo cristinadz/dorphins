@@ -64,13 +64,13 @@ function NavBar({ setUser }) {
 		<>
 			<Box bg={useColorModeValue("gray.100", "gray.900")} px={4}  w='100%'>
 				<Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-					{/* <IconButton
+					<IconButton
 						size={"md"}
 						icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
 						aria-label={"Open Menu"}
 						display={{ md: "none" }}
 						onClick={isOpen ? onClose : onOpen}
-					/> */}
+					/>
 					<HStack spacing={8} alignItems={"center"}>
 						{/* <IconButton as={ NavLink} to='/home' size='lg' color='blackAlpha.600' icon={<BsEmojiSmileUpsideDown />}/> */}
 						<HStack
@@ -79,38 +79,20 @@ function NavBar({ setUser }) {
 							// display={{ base: "none", md: "flex" }}
 						>
 
-            <Link as={ NavLink } to='/home'> home</Link>
+            {/* <Link as={ NavLink } to='/home'> home</Link>
             <Link as={ NavLink } to='/activity'> activity </Link>
-            <Link as={ NavLink } to='/events'> events</Link>
+            <Link as={ NavLink } to='/events'> events</Link> */}
 
-							{/* <IconButton
-								as={NavLink}
-								to="/home"
-								icon={<GrHomeRounded />}
-							/> */}
-							{/* <IconButton as={NavLink} to="/profile" icon={<GrUser />} /> */}
-							{/* <IconButton
-								as={NavLink}
-								to="/activity"
-								icon={<GrBarChart />}
-							/> */}
-							{/* <IconButton
-								as={NavLink}
-								to="/events"
-								icon={<GrCalendar />}
-							/> */}
-							{/* <IconButton
-								onClick={handleLogoutClick}
-								icon={<GrLogout />}
-							/> */}
 						</HStack>
 					</HStack>
 					<Flex alignItems={"center"}>
 						<IconButton
 							// variant={"solid"}
 							// colorScheme={"teal"}
+							as={NavLink}
+							to='/addrun'
 							size={"md"}
-							mr={4}
+							mr={1}
 							icon={<GrAddCircle />}
 						></IconButton>
 						<Menu>
@@ -119,10 +101,8 @@ function NavBar({ setUser }) {
 								rounded={"full"}
 								variant={"link"}
 								cursor={'pointer'}
-								minW={0}
-                size={'sm'}
 							>
-							<IconButton as={NavLink} to="/profile"  icon={<FaUserCircle />} />
+							<IconButton as={NavLink} to="/profile" icon={<FaUserCircle />} w={8}/>
 							</MenuButton>
 							<MenuList>
 								<MenuItem as={NavLink} to='/profile'>view profile</MenuItem>
@@ -134,7 +114,7 @@ function NavBar({ setUser }) {
 					</Flex>
 				</Flex>
 
-				{/* {isOpen ? (
+				{isOpen ? (
 					<Box pb={4} display={{ md: "none" }}>
 						<Stack as={"nav"} spacing={4}>
             <Link as={ NavLink } to='/home'> home</Link>
@@ -142,7 +122,7 @@ function NavBar({ setUser }) {
             <Link as={ NavLink } to='/events'> events</Link>
 						</Stack>
 					</Box>
-				) : null} */}
+				) : null}
 			</Box>
 
 
