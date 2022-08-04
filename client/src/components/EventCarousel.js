@@ -33,7 +33,7 @@ function EventCarousel({ events }) {
 
 	return (
 		<>
-            <Heading pt={9} px={3}> featured races:</Heading>
+            <Heading pt={9} px={3} size={'lg'}> featured races</Heading>
 
 			<Container pt={3} pb={5} centerContent  >
 
