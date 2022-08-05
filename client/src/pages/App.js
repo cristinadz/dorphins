@@ -7,16 +7,16 @@ import Home from "./Home";
 import Activity from "./Activity"
 import NavBar from "../components/NavBar";
 import NewRunForm from "../components/NewRunForm";
-import EditRunForm from "../components/EditRunForm";
 import RunDetails from "./RunDetails";
 import EventPage from "./EventPage";
-import { ViewIcon } from "@chakra-ui/icons";
 import ViewProfile from "./ViewProfile";
 import EditProfile from "./EditProfile";
+import Plan from "./Plan";
 
 function App() {
   const [user, setUser] = useState(null)
   const [runs, setRuns] = useState([])
+  const [plans, setPlans] = useState([])
 
 
   useEffect(() => {
@@ -33,6 +33,15 @@ function App() {
       .then(setRuns);
   }, [user]); 
 
+  useEffect(() => {
+    fetch('/plans')
+      .then((r) => r.json())
+      .then(setPlans);
+  }, [user]); 
+
+
+
+
   function addNewRun(newRun){
     setRuns( runs => [...runs, newRun])
   }
@@ -46,17 +55,16 @@ function App() {
   return (
     <div className="App">
 
-      { !user ? null : <NavBar setUser={ setUser } /> }
+      { !user ? null : <NavBar setUser={ setUser } user={user} /> }
 
       <Routes>
         <Route path='/' element={<Welcome setUser = {setUser} user={user} />} />
-        <Route path='/home' element={<Home user={user} />} />
+        <Route path='/plan' element={<Plan user={user} plans ={plans} setUser={setUser} />} />
         <Route path='/activity' element={<Activity user = {user} setUser = {setUser} runs={runs} />} />
         <Route path='/events' element= {<EventPage user = {user} />} />
         <Route path='/login' element= {<Login setUser = {setUser} />} />
         <Route path='/signup' element= {<Signup setUser = {setUser} />} />
         <Route path='/addrun' element= {<NewRunForm user={user} addNewRun={addNewRun} />} />
-        {/* <Route path='/edit_run' element= {<EditRunForm user={user} />} /> */}
         <Route path='/runs/:id' element= {<RunDetails deleteRun={deleteRun} user = {user} />} />
         <Route path='/profile' element= {<ViewProfile user = {user} runs={runs} />} />
         <Route path='/edit_profile' element= {<EditProfile user = {user} setUser = {setUser} />} />

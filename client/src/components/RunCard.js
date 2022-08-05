@@ -26,6 +26,8 @@ function RunCard({ run }) {
 		>
 			<Link to={`/runs/${id}`}>
 			<Box 
+				shadow='md'
+				borderWidth='1px'
 				w="sm"
 				mx="auto"
 				bg="white"
@@ -41,7 +43,7 @@ function RunCard({ run }) {
 					</Text>
 				</Flex>
 
-				<Box py={4} px={6} >
+				<Box py={4} px={6} bgColor={'gray.50'} >
 					<Heading
 						fontSize="xl"
 						fontWeight="bold"

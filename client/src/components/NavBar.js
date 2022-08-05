@@ -1,14 +1,8 @@
 import React from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import { BsEmojiSmileUpsideDown } from "react-icons/bs";
-import { FaUserCircle } from "react-icons/fa";
 import {
-	GrHomeRounded,
-	GrUser,
-	GrBarChart,
-	GrCalendar,
 	GrLogout,
-  GrAddCircle
+	GrAddCircle,
 } from "react-icons/gr";
 import {
 	Box,
@@ -18,7 +12,6 @@ import {
 	Link,
 	IconButton,
 	Button,
-  Icon,
 	Menu,
 	MenuButton,
 	MenuList,
@@ -28,27 +21,11 @@ import {
 	useColorModeValue,
 	Stack,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
-function NavBar({ setUser }) {
+function NavBar({ setUser, user }) {
 	const navigate = useNavigate();
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const Links = ["Dashboard", "Projects", "Team"];
-
-	// const NavLink = ({ children }: { children: ReactNode }) => (
-	// 	<Link
-	// 		px={2}
-	// 		py={1}
-	// 		rounded={"md"}
-	// 		_hover={{
-	// 			textDecoration: "none",
-	// 			bg: useColorModeValue("gray.200", "gray.700"),
-	// 		}}
-	// 		href={"#"}
-	// 	>
-	// 		{children}
-	// 	</Link>
-	// );
 
 	function handleLogoutClick() {
 		fetch("/logout", { method: "DELETE" })
@@ -62,7 +39,7 @@ function NavBar({ setUser }) {
 
 	return (
 		<>
-			<Box bg={useColorModeValue("gray.100", "gray.900")} px={4}  w='100%'>
+			<Box bg={useColorModeValue("gray.100")} px={4} w="100%">
 				<Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
 					<IconButton
 						size={"md"}
@@ -71,44 +48,56 @@ function NavBar({ setUser }) {
 						display={{ md: "none" }}
 						onClick={isOpen ? onClose : onOpen}
 					/>
-					<HStack spacing={8} alignItems={"center"}>
-						{/* <IconButton as={ NavLink} to='/home' size='lg' color='blackAlpha.600' icon={<BsEmojiSmileUpsideDown />}/> */}
-						<HStack
+					{/* <HStack
 							as={"nav"}
 							spacing={4}
 							// display={{ base: "none", md: "flex" }}
 						>
 
-            {/* <Link as={ NavLink } to='/home'> home</Link>
+            <Link as={ NavLink } to='/home'> home</Link>
             <Link as={ NavLink } to='/activity'> activity </Link>
-            <Link as={ NavLink } to='/events'> events</Link> */}
+            <Link as={ NavLink } to='/events'> events</Link>
 
-						</HStack>
-					</HStack>
+						</HStack> */}
 					<Flex alignItems={"center"}>
 						<IconButton
 							// variant={"solid"}
 							// colorScheme={"teal"}
 							as={NavLink}
-							to='/addrun'
+							to="/addrun"
 							size={"md"}
 							mr={1}
 							icon={<GrAddCircle />}
 						></IconButton>
-						<Menu>
+						<Menu bgColor={"cyan.100"}>
 							<MenuButton
 								as={Button}
 								rounded={"full"}
 								variant={"link"}
-								cursor={'pointer'}
+								cursor={"pointer"}
 							>
-							<IconButton as={NavLink} to="/profile" icon={<FaUserCircle />} w={8}/>
+								<Avatar
+									size={"sm"}
+									src={user.profile_img}
+								/>
 							</MenuButton>
 							<MenuList>
-								<MenuItem as={NavLink} to='/profile'>view profile</MenuItem>
-								<MenuItem as={NavLink} to='/edit_profile'> edit profile</MenuItem>
+								<MenuItem as={NavLink} to="/profile">
+									view profile
+								</MenuItem>
+								<MenuItem as={NavLink} to="/edit_profile">
+									{" "}
+									edit profile
+								</MenuItem>
 								<MenuDivider />
-								<MenuItem icon={<GrLogout />} as={Button} onClick={handleLogoutClick} bgColor={"white"}>logout</MenuItem>
+								<MenuItem
+									icon={<GrLogout />}
+									as={Button}
+									onClick={handleLogoutClick}
+									bgColor={"white"}
+								>
+									logout
+								</MenuItem>
 							</MenuList>
 						</Menu>
 					</Flex>
@@ -117,14 +106,22 @@ function NavBar({ setUser }) {
 				{isOpen ? (
 					<Box pb={4} display={{ md: "none" }}>
 						<Stack as={"nav"} spacing={4}>
-            <Link as={ NavLink } to='/home'> home</Link>
-            <Link as={ NavLink } to='/activity'> activity </Link>
-            <Link as={ NavLink } to='/events'> events</Link>
+							<Link as={NavLink} to="/plan">
+								{" "}
+								plan
+							</Link>
+							<Link as={NavLink} to="/activity">
+								{" "}
+								activity{" "}
+							</Link>
+							<Link as={NavLink} to="/events">
+								{" "}
+								events
+							</Link>
 						</Stack>
 					</Box>
 				) : null}
 			</Box>
-
 
 			{/* <IconButton as={NavLink} to="/home" icon={<GrHomeRounded />} />
 			<IconButton as={NavLink} to="/profile" icon={<GrUser />} />

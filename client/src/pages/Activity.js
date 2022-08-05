@@ -107,7 +107,7 @@ function Activity({ setUser, user, runs}) {
 			data: [janMiles, febMiles, marMiles, aprMiles, mayMiles, junMiles, julyMiles, augMiles, sepMiles, octMiles, novMiles, decMiles],
 			fill: true,
 			backgroundColor: "rgba(75,192,192,0.2)",
-			borderColor: "rgba(75,192,192,1)"
+			borderColor: "rgba(12,197,234,1)"
 		  },
 
 		]

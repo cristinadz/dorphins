@@ -1,13 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import SignupForm from '../components/SignupForm'
-import { Text, Link, HStack } from '@chakra-ui/react'
+import { Text, Link, HStack, Container } from '@chakra-ui/react'
 
 function Signup({setUser}) {
   return (
-    <div>Signup Page
+    <div>
         <SignupForm setUser = {setUser}/>
-        <HStack>
+        <HStack justify={'center'}>
           <Text> already have an account? </Text>
           <Link as={NavLink} to='/login' color='cyan.400'> login </Link>
         </HStack>

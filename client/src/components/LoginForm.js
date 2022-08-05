@@ -21,7 +21,7 @@ function LoginForm({ setUser }) {
       .then((r) => {
         if (r.ok) {
           r.json().then((user) => setUser(user))
-          .then(navigate('/home'));
+          .then(navigate('/events'));
         } else {
           r.json().then((err) => setErrors(err));
           console.log(errors);
@@ -34,7 +34,7 @@ function LoginForm({ setUser }) {
     <div>
       <form onSubmit={handleSubmit}>
         <Box m={5} maxW='sm'> 
-        <Heading textAlign ='center' mt={9}> welcome back! glad to see you, again! </Heading>
+        <Heading textAlign ='center' mt={9} mb={7}>glad to see you, again! </Heading>
         <VStack align='stretch' m={3} spacing={5} >
         <Input
             variant='filled'
@@ -56,7 +56,7 @@ function LoginForm({ setUser }) {
             onChange={(e) => setPassword(e.target.value)}
             autoComplete='current-password'
           />
-          <Button p={7} bg="black" textColor="white"type='submit'>login </Button>
+          <Button p={7} bg="black" textColor="white" type='submit'>login </Button>
           </VStack>
           </Box>
       </form>

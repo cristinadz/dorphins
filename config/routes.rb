@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :plans
-  resources :registrations
+  resources :plans, only: [:show, :index]
+  resources :registrations, only: [:create, :index]
   resources :runs
   resources :events
   resources :users, only: [:create, :show, :update]

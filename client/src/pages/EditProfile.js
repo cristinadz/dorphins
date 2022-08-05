@@ -5,7 +5,9 @@ import {
     Input, 
     FormLabel,
     Button,
-    Stack, 
+    Stack,
+    VStack, 
+    Heading
 } from '@chakra-ui/react'
 
 function EditProfile({ user, setUser}) {
@@ -16,7 +18,6 @@ function EditProfile({ user, setUser}) {
         username: user.username,
         email: user.email,
         profile_img: user.profile_img,
-        bio: user.bio
       });
     
       function handleFormChange(e) {
@@ -50,9 +51,15 @@ function EditProfile({ user, setUser}) {
   return (
     <div>
         <form onSubmit={handlePatchProfile}>
+        <Heading textAlign ='center' mt={9}> edit your profile </Heading>
+
+          <VStack px={4}>
+            
           <FormControl isRequired mt={3}>
             <FormLabel>first name</FormLabel>
             <Input
+                        variant='filled'
+                        p={6}
               type='text'
               name='first_name'
               autoComplete='off'
@@ -65,6 +72,8 @@ function EditProfile({ user, setUser}) {
           <FormControl isRequired mt={3}>
             <FormLabel>last name</FormLabel>
             <Input
+                        variant='filled'
+                        p={6}
               type='text'
               name='last_name'
               autoComplete='off'
@@ -77,6 +86,8 @@ function EditProfile({ user, setUser}) {
           <FormControl isRequired mt={3}>
             <FormLabel>username</FormLabel>
             <Input
+                        variant='filled'
+                        p={6}
               type='text'
               name='username'
               autoComplete='off'
@@ -89,6 +100,8 @@ function EditProfile({ user, setUser}) {
           <FormControl isRequired mt={3}>
             <FormLabel>email address</FormLabel>
             <Input
+                        variant='filled'
+                        p={6}
               type='text'
               name='email'
               autoComplete='off'
@@ -99,6 +112,8 @@ function EditProfile({ user, setUser}) {
           <FormControl mt={3}>
             <FormLabel>image url</FormLabel>
             <Input
+                        variant='filled'
+                        p={6}
               type='text'
               name='profile_img'
               autoComplete='off'
@@ -107,7 +122,7 @@ function EditProfile({ user, setUser}) {
             />
           </FormControl>
 
-          <FormControl  mt={3}>
+          {/* <FormControl  mt={3}>
             <FormLabel>bio</FormLabel>
             <Input
               type='text'
@@ -117,24 +132,13 @@ function EditProfile({ user, setUser}) {
               onChange={handleFormChange}
               textColor={'gray.800 '}
             />
-          </FormControl>
+          </FormControl> */}
+</VStack>
+          <Stack mt={4} p={4} spacing={6} direction={['column', 'row']}>
 
-          <Stack mt={4} spacing={6} direction={['column', 'row']}>
             <Button
-              as={Link}
-              to='/profile'
-              bg={'red.400'}
-              color={'white'}
-              w='full'
-              _hover={{
-                bg: 'red.500',
-              }}
-            >
-              cancel
-            </Button>
-            <Button
+            bg="black" textColor="white" p={7}
               type='submit'
-              bg={'blue.400'}
               color={'white'}
               w='full'
               _hover={{
@@ -142,6 +146,14 @@ function EditProfile({ user, setUser}) {
               }}
             >
               save
+            </Button>
+            <Button
+              as={Link}
+              to='/profile'
+              bg={'red.200'}
+              p={7}
+            >
+              cancel
             </Button>
           </Stack>
         </form>

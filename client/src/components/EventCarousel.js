@@ -10,7 +10,6 @@ import {
 	Image,
 	Flex,
 } from "@chakra-ui/react";
-import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 import Slider from "react-slick";
 
 // Settings for the slider
@@ -30,6 +29,8 @@ function EventCarousel({ events }) {
 	const [slider, setSlider] = useState(null);
 	const top = useBreakpointValue({ base: "50%", md: "50%" });
 	const side = useBreakpointValue({ base: "5%", md: "10%" });
+
+
 
 	return (
 		<>
@@ -56,39 +57,9 @@ function EventCarousel({ events }) {
 						type="text/css"
 						href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
 					/>
-					{/* Left Icon */}
-					{/* <Flex> 
-					<IconButton
-					flex={1}
-						aria-label="left-arrow"
-						variant="ghost"
-						position="static"
-						left={side}
-						top={top}
-						// transform={"translate(0%, -50%)"}
-						zIndex={2}
-						onClick={() => slider?.slickPrev()}
-					>
-						<IoIosArrowDropleft size="25" />
-					</IconButton> */}
-					{/* Right Icon */}
-					{/* <IconButton
-					flex={1}
-						aria-label="right-arrow"
-						variant="ghost"
-						position="absolute"
-						right={side}
-						top={top}
-						transform={"translate(0%, -50%)"}
-						zIndex={2}
-						onClick={() => slider?.slickNext()}
-					>
-						<IoIosArrowDropright size="25px" />
-					</IconButton>
-					</Flex> */}
-					{/* Slider */}
 					<Slider {...settings} ref={(slider) => setSlider(slider)}>
 						{events.slice(0, 3).map((event) => (
+
 							<Box
 								key={event.id}
 								height={"3xs"}
@@ -98,7 +69,7 @@ function EventCarousel({ events }) {
 								backgroundPosition="center"
 								backgroundRepeat="no-repeat"
 								backgroundSize="cover"
-								backgroundColor={"gray.200"}
+								backgroundColor={"cyan.100"}
 							>
 								<Container height="3xs" centerContent>
 									<VStack spacing={2} maxW={"xs"} mt={6}>
@@ -113,7 +84,7 @@ function EventCarousel({ events }) {
 											fontSize={{ base: "md", lg: "lg" }}
 											color="GrayText"
 										>
-											{event.date}
+											{ event.date.slice(0,10) }
 										</Text>
 									</VStack>
 								</Container>

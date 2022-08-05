@@ -33,7 +33,8 @@ function ViewProfile({ user, runs }) {
 				<Image
 					borderRadius="full"
 					boxSize="150px"
-					src="https://bit.ly/dan-abramov"
+					objectFit='cover'
+					src={profile_img}
 					alt="Dan Abramov"
 				/>
 				<Text fontSize={"2xl"}> {first_name + " " + last_name} </Text>

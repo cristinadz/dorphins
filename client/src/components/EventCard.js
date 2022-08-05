@@ -57,7 +57,7 @@ function EventCard({ event, user }) {
 
 	return (
 		<>
-			<Center py={1}>
+			<Center py={1} >
 				<Stack
 					borderRadius="2xl"
 					w={"sm"}
@@ -115,12 +115,14 @@ function EventCard({ event, user }) {
 							alignItems={"center"}
 						>
 							<Button
+							p={3}  
+							textColor="white"
 								value={id}
 								flex={1}
 								fontSize={"md"}
-								rounded={"full"}
+								rounded={"xl"}
 								onClick={handleRegistration}
-                                bgColor={'gray.300'}
+                                bgColor={'black'}
 								// _focus={{
 								// 	bg: "gray.900",
 								// }}

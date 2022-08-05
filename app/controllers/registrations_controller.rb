@@ -3,6 +3,10 @@ class RegistrationsController < ApplicationController
         reg = Registration.create!(reg_params)
         render json: reg, status: :created
     end
+    
+    def index 
+        render json: @current_user.registrations
+    end
 
     private 
 

@@ -7,12 +7,10 @@ function Login({ setUser }) {
   return (
     <div>
         <LoginForm setUser={setUser} />
-        <Container m={5} >
-          <HStack >
+          <HStack justify={'center'}>
             <Text> don't have an account?</Text>
             <Link as={ NavLink } to='/signup' color='cyan.400'> register here </Link>
           </HStack>
-      </Container>
     </div>
   )
 }
