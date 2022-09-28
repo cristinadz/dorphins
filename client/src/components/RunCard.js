@@ -2,14 +2,17 @@ import React from "react";
 import { Flex, Box, Icon, chakra, Heading, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-function RunCard({ run }) {
+function RunCard({ run, plans, user }) {
 	const { id, miles, total_time, date } = run
+
+	const currentPlan = plans.find((plan) => plan.id === run.plan_id);
+	console.log(currentPlan)
 
 	let formatDate = new Date(date).toLocaleDateString("en-us", {
 		weekday: "long",
 		year: "numeric",
 		month: "short",
-		day: "numeric",
+		day: "numeric", 
 	});
 
 	return (
@@ -39,7 +42,7 @@ function RunCard({ run }) {
 			>
 				<Flex alignItems="center" px={6} py={1} bg="cyan.400">
 					<Text color="white" fontSize="lg">
-						5K PLAN
+						{/* {currentPlan ? `${currentPlan}` : "no plan"} */}
 					</Text>
 				</Flex>
 

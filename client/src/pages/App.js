@@ -60,7 +60,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Welcome setUser = {setUser} user={user} />} />
         <Route path='/plan' element={<Plan user={user} plans ={plans} setUser={setUser} />} />
-        <Route path='/activity' element={<Activity user = {user} setUser = {setUser} runs={runs} />} />
+        <Route path='/activity' element={<Activity user = {user} setUser = {setUser} runs={runs} plans = {plans} />} />
         <Route path='/events' element= {<EventPage user = {user} />} />
         <Route path='/login' element= {<Login setUser = {setUser} />} />
         <Route path='/signup' element= {<Signup setUser = {setUser} />} />

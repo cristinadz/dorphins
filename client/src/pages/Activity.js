@@ -7,7 +7,7 @@ import { Chart as ChartJS } from 'chart.js/auto'
 
 
 
-function Activity({ setUser, user, runs}) {
+function Activity({ setUser, user, runs, plans}) {
 
 	// JANUARY
 	const janRuns = runs.filter( run => {
@@ -96,7 +96,7 @@ function Activity({ setUser, user, runs}) {
 	const decMiles = decRuns.map( run => run.miles).reduce((partialSum, a) => partialSum + a, 0)
 
 
-	const runCards = runs.map((run) => <RunCard key={run.id} run={run} />);
+	const runCards = runs.map((run) => <RunCard key={run.id} run={run} plans ={plans} user={user} />);
 
 
 	const data = {
