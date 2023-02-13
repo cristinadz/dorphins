@@ -41,8 +41,7 @@ function PlanCard({ user, plan, setUser }) {
 						<Text> number of runs: {plan.number_of_runs}</Text>
 
 						<Button value={plan.id} onClick={handleAddPlan} mt={6}>
-							{" "}
-							pick plan{" "}
+							pick plan
 						</Button>
 					</AccordionPanel>
 				</AccordionItem>

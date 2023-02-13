@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import {
 	Box,
-	IconButton,
 	useBreakpointValue,
 	VStack,
 	Heading,
 	Text,
 	Container,
 	Image,
-	Flex,
 } from "@chakra-ui/react";
 import Slider from "react-slick";
 
@@ -30,20 +28,18 @@ function EventCarousel({ events }) {
 	const top = useBreakpointValue({ base: "50%", md: "50%" });
 	const side = useBreakpointValue({ base: "5%", md: "10%" });
 
-
-
 	return (
 		<>
-            <Heading pt={9} px={3} size={'lg'}> featured races</Heading>
-
-			<Container pt={3} pb={5} centerContent  >
-
+			<Heading pt={9} px={3} size={"lg"}>
+				featured races
+			</Heading>
+			<Container pt={3} pb={5} centerContent>
 				<Box
-					  position={'static'}
+					position={"static"}
 					height={"3xs"}
 					width={"sm"}
 					rounded={"2xl"}
-					overflow={''}
+					overflow={""}
 				>
 					{/* CSS files for react-slick */}
 					<link
@@ -59,7 +55,6 @@ function EventCarousel({ events }) {
 					/>
 					<Slider {...settings} ref={(slider) => setSlider(slider)}>
 						{events.slice(0, 3).map((event) => (
-
 							<Box
 								key={event.id}
 								height={"3xs"}
@@ -79,12 +74,14 @@ function EventCarousel({ events }) {
 											src={event.img}
 											alt="race logo"
 										/>
-										<Heading fontSize={"xl"} >{event.name.toLowerCase()}</Heading>
+										<Heading fontSize={"xl"}>
+											{event.name.toLowerCase()}
+										</Heading>
 										<Text
 											fontSize={{ base: "md", lg: "lg" }}
 											color="GrayText"
 										>
-											{ event.date.slice(0,10) }
+											{event.date.slice(0, 10)}
 										</Text>
 									</VStack>
 								</Container>

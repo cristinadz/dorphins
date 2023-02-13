@@ -48,12 +48,10 @@ function SignupForm({ setUser }) {
 			<form onSubmit={handleSubmit}>
 				<Box m={5} maxW="sm">
 					<Heading textAlign="center" mt={9}>
-						{" "}
 						hello!
 					</Heading>
 					<Heading textAlign="center" mb={7}>
-						{" "}
-						register to get started{" "}
+						register to get started
 					</Heading>
           <VStack align='stretch' m={3} spacing={5} >
 

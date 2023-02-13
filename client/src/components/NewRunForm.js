@@ -53,7 +53,6 @@ function NewRunForm({ user, addNewRun }) {
 			<Flex align={"center"} justify={"center"}>
 				<form onSubmit={handleSubmit}>
 					<Heading textAlign="center" mt={9}>
-						{" "}
 						let's log those miles!
 					</Heading>
 					<Box m={5} maxW="sm">

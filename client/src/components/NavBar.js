@@ -8,7 +8,6 @@ import {
 	Box,
 	Flex,
 	Avatar,
-	HStack,
 	Link,
 	IconButton,
 	Button,
@@ -48,17 +47,9 @@ function NavBar({ setUser, user }) {
 						display={{ md: "none" }}
 						onClick={isOpen ? onClose : onOpen}
 					/>
-					{/* <HStack
-							as={"nav"}
-							spacing={4}
-							// display={{ base: "none", md: "flex" }}
-						>
+	
 
-            <Link as={ NavLink } to='/home'> home</Link>
-            <Link as={ NavLink } to='/activity'> activity </Link>
-            <Link as={ NavLink } to='/events'> events</Link>
-
-						</HStack> */}
+						/HStack> }
 					<Flex alignItems={"center"}>
 						<IconButton
 							// variant={"solid"}

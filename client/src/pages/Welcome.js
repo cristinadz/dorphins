@@ -1,4 +1,5 @@
 import React from 'react'
+import welcomeImg from '../images/welcome_img.png'
 import { Link } from 'react-router-dom'
 import { Button, Flex, Image, Container, VStack, Text, Heading } from '@chakra-ui/react'
 
@@ -7,7 +8,7 @@ function Welcome() {
   return (
     <div>
       <Flex justifyContent='center'>
-        <Image mt={8} src="https://i.ibb.co/v3F4Lxv/Finish-line-cuate.png" />
+        <Image mt={8} src={welcomeImg} />
       </Flex>
       <Container maxW='sm'>
         <Heading mx={3} size='xl'> welcome to</Heading>

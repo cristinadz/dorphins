@@ -77,7 +77,6 @@ function EventCard({ event, user }) {
 					</Flex>
 					<Stack
 						flex={3}
-						// flexDirection="column"
 						justifyContent="center"
 						alignItems="center"
 						p={1}
@@ -123,9 +122,6 @@ function EventCard({ event, user }) {
 								rounded={"xl"}
 								onClick={handleRegistration}
                                 bgColor={'black'}
-								// _focus={{
-								// 	bg: "gray.900",
-								// }}
 							>
 								register
 							</Button>
