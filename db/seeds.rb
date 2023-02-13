@@ -3,11 +3,11 @@ puts "planting some events..."
 e1 = Event.create( name: "Pacific Beach Half Marathon", date: DateTime.new(2023, 10, 1), fee: 115, category: "half marathon", img:"https://i.ibb.co/xJKQg2X/pacific.png")
 e2 = Event.create( name: "San Diego Santa Run", date: DateTime.new(2023, 12, 10), fee: 50, category: "5K", img:"https://i.ibb.co/RPTyRkF/santa.png" )
 e3 = Event.create( name: "Resolution Run", date: DateTime.new(2023, 1, 14), fee: 30, category: "10K", img: "https://i.ibb.co/MnZp4dD/resolution.png" )
-e4 = Event.create( name: "Hidden World 5K", date:DateTime.new(2023, 10, 23), fee: 60, category: "5K" )
-e5 = Event.create( name: "Pasadena Trail", date: DateTime.new(2023, 10, 16) , fee: 75, category: "half marathon" )
-e6 = Event.create( name: "Long Beach Marathon", date: DateTime.new(2023, 10, 9), fee: 130, category: "marathon" )
-e7 = Event.create( name: "Beach Fiesta", date: DateTime.new(2023, 11, 5), fee: 130, category: "half marathon" )
-e8 = Event.create( name: "Silicon Valley Turkey Trot", date: DateTime.new(2023, 11, 24), fee: 40, category: "10K" )
+e4 = Event.create( name: "Hidden World 5K", date:DateTime.new(2023, 10, 23), fee: 60, category: "5K", img: "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930" )
+e5 = Event.create( name: "Pasadena Trail", date: DateTime.new(2023, 10, 16) , fee: 75, category: "half marathon",img: "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930" )
+e6 = Event.create( name: "Long Beach Marathon", date: DateTime.new(2023, 10, 9), fee: 130, category: "marathon",img: "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930" )
+e7 = Event.create( name: "Beach Fiesta", date: DateTime.new(2023, 11, 5), fee: 130, category: "half marathon",img: "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930" )
+e8 = Event.create( name: "Silicon Valley Turkey Trot", date: DateTime.new(2023, 11, 24), fee: 40, category: "10K",img: "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930" )
 
 puts "writing plans..."
 
